@@ -26,6 +26,22 @@
 				<color rgba="0.0 0.0 0 1"/>
 			</material>
 		</visual>
+		<visual name="seaos_logo_visual">
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+                <mesh>
+                    <uri>meshes/base/seaos_logo.dae</uri>
+                </mesh>
+            </geometry>
+            <material>
+                <diffuse>1.0 1.0 1.0</diffuse>
+                <pbr>
+                    <metal>
+                        <albedo_map>meshes/base/SEAOS_Logo.png</albedo_map>
+                    </metal>
+                </pbr>
+            </material>
+        </visual>
 		<visual>
 			<origin rpy="0 1.57079632679 0" xyz="-0.099 0 0.195"/>
 			<geometry>
