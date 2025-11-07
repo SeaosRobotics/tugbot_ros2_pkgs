@@ -12,10 +12,10 @@ def generate_launch_description():
         'tugbot_depot.sdf'
     ])
 
-    ign_ros_bridge_launch_path = PathJoinSubstitution([
+    ros_gz_bridge_launch_path = PathJoinSubstitution([
         get_package_share_directory('tugbot_gazebo'),
         'launch',
-        'ign_ros2_bridge.launch.py'
+        'ros_gz_bridge.launch.py'
     ])
     
     robot_description_launch_path = PathJoinSubstitution([
@@ -32,7 +32,7 @@ def generate_launch_description():
                 ('gz_args', world_file_path)]
         ),
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(ign_ros_bridge_launch_path)
+            PythonLaunchDescriptionSource(ros_gz_bridge_launch_path)
         ),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(robot_description_launch_path)
