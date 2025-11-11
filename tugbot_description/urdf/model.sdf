@@ -41,14 +41,30 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>meshes/base/movai_logo.dae</uri>
+            <uri>../meshes/base/movai_logo.dae</uri>
           </mesh>
         </geometry>
         <material>
           <diffuse>1.0 1.0 1.0</diffuse>
           <pbr>
             <metal>
-              <albedo_map>meshes/base/movai-logo.png</albedo_map>
+              <albedo_map>../meshes/base/movai-logo.png</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <visual name="seaos_logo_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>../meshes/base/seaos_logo.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <pbr>
+            <metal>
+              <albedo_map>../meshes/base/SEAOS_Logo.png</albedo_map>
             </metal>
           </pbr>
         </material>
@@ -58,7 +74,7 @@
         <geometry>
           <mesh>
             <scale>1.0 1.0 1.0</scale>
-            <uri>meshes/light_link/light_led.stl</uri>
+            <uri>../meshes/light_link/light_led.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -73,7 +89,7 @@
         <geometry>
           <mesh>
             <scale>1.02 1.02 1.02</scale>
-            <uri>meshes/light_link/light.stl</uri>
+            <uri>../meshes/light_link/light.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -363,7 +379,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>meshes/VLP16_base_1.dae</uri>
+            <uri>../meshes/VLP16_base_1.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -373,7 +389,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>meshes/VLP16_base_2.dae</uri>
+            <uri>../meshes/VLP16_base_2.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -383,7 +399,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>meshes/VLP16_scan.dae</uri>
+            <uri>../meshes/VLP16_scan.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -465,7 +481,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>meshes/gripper2/gripper2.dae</uri>
+            <uri>../meshes/gripper2/gripper2.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -552,7 +568,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>meshes/gripper2/gripper_hand.stl</uri>
+            <uri>../meshes/gripper2/gripper_hand.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -835,7 +851,7 @@
         <geometry>
           <mesh>
             <scale>0.98 0.98 1.0</scale>
-            <uri>meshes/wheel/wheel.dae</uri>
+            <uri>../meshes/wheel/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -902,7 +918,7 @@
         <geometry>
           <mesh>
             <scale>0.98 0.98 1.0</scale>
-            <uri>meshes/wheel/wheel.dae</uri>
+            <uri>../meshes/wheel/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>

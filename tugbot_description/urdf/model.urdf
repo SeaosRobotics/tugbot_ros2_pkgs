@@ -13,19 +13,9 @@
 			<geometry>
 				<mesh filename="package://tugbot_description/meshes/base/movai_logo.dae"/>
 			</geometry>
-			<material name="">
-				<color rgba="1.0 1.0 1.0 1.0"/>
-			</material>
+			<!-- Material is defined in the DAE file, which uses movai-logo.png as texture -->
 		</visual>
-		<visual>
-			<origin rpy="0 1.57079632679 0" xyz="-0.1 0 0.1945"/>
-			<geometry>
-				<mesh filename="package://tugbot_description/meshes/base/movai-logo.png"/>
-			</geometry>
-			<material name="">
-				<color rgba="0.0 0.0 0 1"/>
-			</material>
-		</visual>
+		<!-- Removed invalid visual element that tried to use PNG as mesh -->
 		<visual name="seaos_logo_visual">
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>

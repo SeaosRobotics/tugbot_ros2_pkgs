@@ -5,22 +5,22 @@
       <author>Blender User</author>
       <authoring_tool>Blender 4.5.4 LTS commit date:2025-10-27, commit time:12:46, hash:b3efe983cc58</authoring_tool>
     </contributor>
-    <created>2025-11-06T16:37:29</created>
-    <modified>2025-11-06T16:37:29</modified>
+    <created>2025-11-11T11:57:43</created>
+    <modified>2025-11-11T11:57:43</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
   <library_effects>
     <effect id="SEAOS-Logo_600x130px-effect">
       <profile_COMMON>
-        <newparam sid="SEAOS-Logo_600x130px_png-surface">
+        <newparam sid="SEAOS_Logo_png-surface">
           <surface type="2D">
-            <init_from>SEAOS-Logo_600x130px_png</init_from>
+            <init_from>SEAOS_Logo_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="SEAOS-Logo_600x130px_png-sampler">
+        <newparam sid="SEAOS_Logo_png-sampler">
           <sampler2D>
-            <source>SEAOS-Logo_600x130px_png-surface</source>
+            <source>SEAOS_Logo_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -29,7 +29,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="SEAOS-Logo_600x130px_png-sampler" texcoord="SEAOS-Logo_600x130px-mesh-map-0"/>
+              <texture texture="SEAOS_Logo_png-sampler" texcoord="SEAOS-Logo_600x130px-mesh-map-0"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.5</float>
@@ -40,8 +40,8 @@
     </effect>
   </library_effects>
   <library_images>
-    <image id="SEAOS-Logo_600x130px_png" name="SEAOS-Logo_600x130px_png">
-      <init_from>SEAOS-Logo_600x130px.png</init_from>
+    <image id="SEAOS_Logo_png" name="SEAOS_Logo_png">
+      <init_from>SEAOS_Logo.png</init_from>
     </image>
   </library_images>
   <library_materials>
