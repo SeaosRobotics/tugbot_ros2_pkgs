@@ -395,9 +395,7 @@
     </model>
 
     <include>
-      <uri>
-        https://fuel.ignitionrobotics.org/1.0/MovAi/models/Tugbot
-      </uri>
+      <uri>file://MODEL_SDF_PATH</uri>
       <name>tugbot</name>
       <pose>2.75268 1.0014 0.132279 0 0 0</pose>
     </include>

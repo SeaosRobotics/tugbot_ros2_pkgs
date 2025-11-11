@@ -1,7 +1,7 @@
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, SetEnvironmentVariable, DeclareLaunchArgument
+from launch.actions import IncludeLaunchDescription, SetEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import PathJoinSubstitution, LaunchConfiguration
+from launch.substitutions import PathJoinSubstitution
 from ament_index_python.packages import get_package_share_directory
 import os
 import tempfile
@@ -13,22 +13,31 @@ def generate_launch_description():
         'tugbot_depot.sdf'
     )
     
+    # Get the package share directory for resource path
+    tugbot_description_share = get_package_share_directory('tugbot_description')
+    
     # Get the absolute path to the model.sdf file
-    model_sdf_path = os.path.join(
-        get_package_share_directory('tugbot_description'),
+    model_sdf_path_absolute = os.path.join(
+        tugbot_description_share,
         'urdf',
         'model.sdf'
     )
     
-    # Get the package share directory for resource path
-    tugbot_description_share = get_package_share_directory('tugbot_description')
-    
-    # Set GZ_SIM_RESOURCE_PATH so Gazebo can find the meshes
+    # Set GZ_SIM_RESOURCE_PATH so Gazebo can find the meshes and models
+    # GZ_SIM_RESOURCE_PATH is a colon-separated list of directories where Gazebo looks for resources
+    # It's used to resolve relative paths in model:// and file:// URIs
     gz_resource_path = os.environ.get('GZ_SIM_RESOURCE_PATH', '')
     if gz_resource_path:
-        gz_resource_path = f'{gz_resource_path}:{tugbot_description_share}'
+        # If already set, append our package share directory (avoid duplicates)
+        if tugbot_description_share not in gz_resource_path:
+            gz_resource_path = f'{gz_resource_path}:{tugbot_description_share}'
     else:
+        # If not set, use only our package share directory
         gz_resource_path = tugbot_description_share
+    
+    # Use absolute file path for the model (file:// URIs require absolute paths)
+    # The path points to tugbot_description/urdf/model.sdf in the package share directory
+    model_sdf_path = model_sdf_path_absolute
     
     # Read the world file and replace the model URI
     with open(world_file_original, 'r') as f:
@@ -62,31 +71,8 @@ def generate_launch_description():
         'launch',
         'tugbot_description.launch.py'
     ])
-    
-    navigation2_launch_path = PathJoinSubstitution([
-        get_package_share_directory('tugbot_navigation2'),
-        'launch',
-        'navigation2.launch.py'
-    ])
-    
-    # Default map path
-    default_map_path = os.path.join(
-        get_package_share_directory('tugbot_navigation2'),
-        'map',
-        'map.yaml'
-    )
 
     return LaunchDescription([
-        DeclareLaunchArgument(
-            'map',
-            default_value=default_map_path,
-            description='Full path to map file to load'
-        ),
-        DeclareLaunchArgument(
-            'use_sim_time',
-            default_value='true',
-            description='Use simulation (Gazebo) clock if true'
-        ),
         SetEnvironmentVariable(
             'GZ_SIM_RESOURCE_PATH',
             gz_resource_path
@@ -100,16 +86,11 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(ros_gz_bridge_launch_path),
             launch_arguments=[
-                ('enable_slam', 'false')]  # Disable SLAM for navigation
+                ('enable_slam', 'true'),
+                ('enable_rviz', 'true')]
         ),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(robot_description_launch_path)
-        ),
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(navigation2_launch_path),
-            launch_arguments={
-                'map': LaunchConfiguration('map'),
-                'use_sim_time': LaunchConfiguration('use_sim_time')
-            }.items()
         )
     ])
+
